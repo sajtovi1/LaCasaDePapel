@@ -4,16 +4,16 @@ class Baza{
 
     public function __construct()
     {
-        $this->konekcija = new Mysqli('mis.arbor.local', 'root', '', 'LaCasaDePapel');
+        $this->konekcija = new Mysqli('localhost', 'root', '', 'LaCasaDePapel');
         $this->konekcija->set_charset("utf-8");
     }
 
     public function pretraziSveEpizode($sezonaID, $sortiranje)
     {
         if($sezonaID == 0){
-            $query = "SELECT * FROM epizoda e join sezona s on e.sezonaID = s.sezonaID order by brojEpizode $sortiranje";
+            $query = "SELECT * FROM epizoda e join sezona s on e.sezonaID = s.sezonaID order by ocena $sortiranje";
         }else{
-            $query = "SELECT * FROM epizoda e join sezona s on e.sezonaID = s.sezonaID WHERE e.sezonaID = $sezonaID order by brojEpizode $sortiranje";
+            $query = "SELECT * FROM epizoda e join sezona s on e.sezonaID = s.sezonaID WHERE e.sezonaID = $sezonaID order by ocena $sortiranje";
         }
 
         $niz = [];
@@ -44,7 +44,8 @@ class Baza{
 
     public function usesiEpizodu($nazivEpizode, $brojEpizode, $sezonaID, $review, $ocena)
     {
-        $query = "INSERT INTO epizoda VALUES (null, '$nazivEpizode', $sezonaID, $brojEpizode, $review, $ocena)";
+        $query = "INSERT INTO epizoda VALUES (null, '$nazivEpizode', $sezonaID, $brojEpizode, '$review', $ocena)";
+
         return $this->konekcija->query($query);
     }
 
