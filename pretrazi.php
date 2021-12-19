@@ -1,5 +1,6 @@
 <?php
 require 'sesija.php';
+$baza = new Baza();
 
 $pretraga = trim($_GET['pretraga']);
 $sortiranje = trim($_GET['sortiranje']);

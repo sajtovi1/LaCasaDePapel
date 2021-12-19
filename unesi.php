@@ -1,5 +1,6 @@
 <?php
 require 'sesija.php';
+$baza = new Baza();
 
 $nazivEpizode = trim($_POST['nazivEpizode']);
 $brojEpizode = trim($_POST['brojEpizode']);

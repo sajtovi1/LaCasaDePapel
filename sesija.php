@@ -4,7 +4,7 @@ include 'Baza.php';
 
 session_start();
 
-$baza = new Baza();
+
 
 if(!isset($_SESSION['planUToku'])){
     $_SESSION['planUToku'] = false;

@@ -1,6 +1,7 @@
 <?php
 
 require 'sesija.php';
+$baza = new Baza();
 
 $sezone = $baza->vratiSveSezone();
 
